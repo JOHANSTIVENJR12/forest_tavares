@@ -139,6 +139,20 @@
         <div><a href="tel:+33614083871">06 14 08 38 71</a> · <a href="https://wa.me/33614083871">WhatsApp</a> · <a href="../legal/index.html">Legal</a></div>
       </div>
     </footer>
-  </body>
+    <script>
+      document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+        const items = Array.from(carousel.querySelectorAll('.carousel-item'));
+        const showSlide = (direction) => {
+          const current = items.findIndex((item) => item.classList.contains('active'));
+          const next = (current + direction + items.length) % items.length;
+          items[current].classList.remove('active');
+          items[next].classList.add('active');
+        };
+        carousel.querySelector('[data-slide="prev"]').addEventListener('click', () => showSlide(-1));
+        carousel.querySelector('[data-slide="next"]').addEventListener('click', () => showSlide(1));
+      });
+    </script>  </body>
 </html>
+
+
 
